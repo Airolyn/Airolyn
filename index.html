@@ -12,9 +12,14 @@
       background: #181818;
       color: #fff;
       display: flex; align-items: center; justify-content: space-between;
-      width: 100vw; min-width: 100vw;
-      left: 0; right: 0; position: relative; z-index:2;
-      box-sizing: border-box; padding: 12px 0; min-height: 56px; 
+      width: 100vw;
+      min-width: 100vw;
+      left: 0; right: 0;
+      position: relative;
+      z-index:2;
+      box-sizing: border-box;
+      padding: 12px 0; /* No side white space */
+      min-height: 56px;
       box-shadow: 0 3px 24px -14px #0005;
     }
     .navbar-logo {
@@ -23,8 +28,10 @@
     .navbar-logo img { height: 40px; width: auto; display: inline-block;}
     .brand { font-weight: 700; letter-spacing: .5px; }
     .nav-menu { display: flex; align-items: center; gap: 14px;}
-    .nav-link { border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;
-      text-decoration: none; border-radius: 9px; transition: .18s;}
+    .nav-link {
+      border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;
+      text-decoration: none; border-radius: 9px; transition: .18s;
+    }
     .nav-link.active, .nav-link:hover { background: #232323; color:#6ea8ff; }
     .nav-btn, .github-btn {
       border: none; background: #fff; padding:6px 12px; border-radius: 13px;
@@ -37,7 +44,6 @@
     .hero-section { display:flex; align-items:center;justify-content:space-between; gap:22px; padding: 48px 6vw 0 6vw;}
     .hero-title { font-size:44px; font-weight: 700; margin-bottom:9px;}
     .animate-gradient {
-      font-size: 1.2em;
       background: linear-gradient(90deg, #6ea8ff, #b187ff, #e6b0ff, #6ea8ff);
       background-size: 400% 400%;
       -webkit-background-clip: text;
@@ -84,9 +90,14 @@
       display:none;
       flex-direction: column;
       justify-content: center;
-      width: 38px; height: 38px;
-      background: #fff; border-radius: 10px;
-      cursor: pointer; margin-left:8px; border: none; align-items: center;
+      width: 38px;
+      height: 38px;
+      background: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left:8px;
+      border: none;
+      align-items: center;
     }
     .hamburger span {
       height: 3px; width: 26px; background: #222; border-radius:2px; margin: 3.4px 0; display: block;
@@ -101,44 +112,73 @@
       .features-wrapper {grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,auto);}
     }
     @media (max-width: 750px) {
-      .navbar { padding: 9px 0; }
-      .nav-menu { display: flex; align-items: center; gap: 0;}
+      .navbar {
+        padding: 9px 0;
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
       .navbar-logo .brand { font-size:25px; }
       .nav-links-desktop { display: none; }
       .hamburger { display: flex; }
-      .dark-mode .hamburger { background: #222; }
-      .mobile-nav { display:none;}
       .mobile-nav.active { display:block; }
       .btn, .btn-secondary { font-size:16.5px; padding:11px 17px; }
       .hero-section { flex-direction: column; padding: 27px 3vw 0 3vw; gap:28px;}
-      .hero-title { font-size:27px; }
-      .animate-gradient { font-size: 2.2em !important; }
+      .hero-title { font-size:27px;}
+      .animate-gradient { font-size:40px; } /* INCREASED heading on mobile ONLY */
       .features-wrapper {grid-template-columns:1fr; gap:18px; padding: 0 3vw;}
-      .feature-card {
-        min-width: 140px;
-        max-width: 210px;
-        width: 90vw;
-        margin:auto;
-      }
+      .feature-card {min-width: 88vw; max-width: 88vw; width: 88vw; margin:10px auto;}  /* Much narrower on mobile, only mobile version! */
       .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
     }
-    body.dark-mode { background: #111 !important; color: #fff !important;}
+    body.dark-mode {
+      background: #111 !important;
+      color: #fff !important;
+    }
     .dark-mode .navbar,
     .dark-mode .feature-card,
     .dark-mode .footer-bar {
-      background: #181818 !important; color: #fff !important;
+      background: #181818 !important;
+      color: #fff !important;
       box-shadow: 0 4px 24px 0 #1113, 0 1.5px 4px #1111;
     }
     .dark-mode .feature-card { border-color: #242424 !important; }
     .dark-mode .nav-link { color: #fff !important; }
-    .dark-mode .nav-link.active, .dark-mode .nav-link:hover { background: #222 !important; color: #6ea8ff !important; }
+    .dark-mode .nav-link.active, .dark-mode .nav-link:hover {
+      background: #222 !important;
+      color: #6ea8ff !important;
+    }
     .dark-mode .btn { background: #fff !important; color: #181818 !important; }
-    .dark-mode .btn-secondary { background: #282828 !important; color: #fff !important; border-color: #444 !important;}
-    .dark-mode .navbar-logo .brand, .dark-mode .features-heading { color: #fff !important;}
-    .dark-mode .github-btn, .dark-mode .nav-btn, .github-btn, .nav-btn {background: #fff !important;}
-    .dark-mode .github-btn svg, .dark-mode .nav-btn svg, .github-btn svg, .nav-btn svg {fill: #232323 !important;}
-    .dark-mode .nav-btn:hover, .dark-mode .github-btn:hover, .nav-btn:hover, .github-btn:hover {background: #f0f0f0 !important;}
-    .dark-mode .hero-title .animate-gradient {-webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; color: inherit !important; filter: saturate(1.4) brightness(1.08);}
+    .dark-mode .btn-secondary {
+      background: #282828 !important; color: #fff !important; border-color: #444 !important;
+    }
+    .dark-mode .navbar-logo .brand, .dark-mode .features-heading {
+      color: #fff !important;
+    }
+    .dark-mode .github-btn,
+    .dark-mode .nav-btn,
+    .github-btn, .nav-btn {
+      background: #fff !important;
+    }
+    .dark-mode .github-btn svg,
+    .dark-mode .nav-btn svg,
+    .github-btn svg, .nav-btn svg {
+      fill: #232323 !important;
+    }
+    .dark-mode .nav-btn:hover, .dark-mode .github-btn:hover,
+    .nav-btn:hover, .github-btn:hover {background: #f0f0f0 !important;}
+    .dark-mode .hero-title .animate-gradient {
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      color: inherit !important;
+      filter: saturate(1.4) brightness(1.08);
+    }
+    /* Hamburger white bars in dark mode */
+    .dark-mode .hamburger span {
+      background: #fff !important;
+    }
   </style>
   <script>
     function setDarkMode(on) {
@@ -169,6 +209,7 @@
         hamburger.addEventListener("click", function() {
           mobileNav.classList.toggle("active");
         });
+        // Click outside closes menu
         document.addEventListener("click", function(e){
           if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
             mobileNav.classList.remove("active");
