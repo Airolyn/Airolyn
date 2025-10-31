@@ -12,12 +12,18 @@
       background: #181818;
       color: #fff;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 32px; min-height: 56px; box-shadow: 0 3px 24px -14px #0005;
+      width: 100vw;
+      min-width: 100vw;
+      left: 0; right: 0;
       position: relative;
       z-index:2;
+      box-sizing: border-box;
+      padding: 12px 0; /* No side white space */
+      min-height: 56px; 
+      box-shadow: 0 3px 24px -14px #0005;
     }
     .navbar-logo {
-      display: flex; gap:8px; align-items: center; font-size: 30px;
+      display: flex; gap:8px; align-items: center; font-size: 30px; margin-left: 22px;
     }
     .navbar-logo img { height: 40px; width: auto; display: inline-block;}
     .brand { font-weight: 700; letter-spacing: .5px; }
@@ -108,7 +114,7 @@
     }
     @media (max-width: 750px) {
       .navbar {
-        padding: 9px 2vw;
+        padding: 9px 0;
       }
       .nav-menu {
         display: flex;
