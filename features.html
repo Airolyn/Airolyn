@@ -5,13 +5,14 @@
   <title>Features | Airolyn App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #f6f7fb; color: #222;}
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #f6f7fb; color: #222; }
     .navbar {
       background: #181818;
       color: #fff;
       display: flex; align-items: center; justify-content: space-between;
-      width: 100vw; min-width: 100vw; left:0; right:0; position:relative; z-index:2;
+      width: 100vw; min-width: 100vw;
       box-sizing: border-box;padding: 12px 0;min-height: 56px;box-shadow: 0 3px 24px -14px #0005;
+      position:relative; z-index:2;
     }
     .navbar-logo {display: flex; gap:8px; align-items: center; font-size: 30px; margin-left: 22px;}
     .navbar-logo img { height: 40px; width: auto; display: inline-block;}
@@ -26,30 +27,26 @@
     .nav-btn svg { fill: #232323; }
     .github-btn svg { fill: #232323; }
     .nav-btn:hover, .github-btn:hover  { background: #f0f0f0; }
-    .hamburger {
-      display:none;
-      flex-direction: column;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      background: #fff;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-left:8px;
-      border: none;
-      align-items: center;
-    }
-    .hamburger span {
-      height: 3px; width: 26px; background: #222 !important;
-      border-radius:2px; margin: 3.4px 0; display: block;
-      transition: all 0.3s;
-    }
+    .hamburger { display:none; flex-direction: column; justify-content: center; width: 38px; height: 38px; background: #fff; border-radius: 10px; cursor: pointer; margin-left:8px; border: none; align-items: center;}
+    .hamburger span { height: 3px; width: 26px; background: #222 !important; border-radius:2px; margin: 3.4px 0; display: block; transition: all 0.3s;}
     .mobile-nav { display:none; position:absolute; right:10px; top:58px; background:#222; border-radius:10px; box-shadow:0 6px 32px #0005; z-index:22; min-width:160px;}
     .mobile-nav .nav-link {color:#fff; background:none; font-size:20px; width:100%; display:block; padding:13px 26px; border-radius:0; text-align:left;}
     .mobile-nav .nav-link:hover {background:#333; color:#6ea8ff;}
+    .mobile-nav.active { display:block; }
 
-    .features-hero {
-      display: flex;flex-direction: column;align-items:center;gap:22px; padding: 48px 6vw 0 6vw; flex-wrap: wrap;
+    /* Desktop Features Hero Layout */
+    .features-hero-desktop {
+      display: flex; flex-direction: row; justify-content: center; align-items: flex-start;
+      gap: 48px; padding: 48px 6vw 0 6vw; max-width: 1350px; margin: 0 auto;
+    }
+    .features-img-col {
+      flex: 0 0 360px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+    .features-img-col img {
+      max-width: 360px; width: 100%; border-radius: 30px; box-shadow: 0 8px 36px #0002;
+    }
+    .features-text-col {
+      flex: 1 1 0; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; min-width: 320px; max-width: 600px;
     }
     .features-title {
       font-size:44px; font-weight:700; margin-bottom:12px; margin-top:0;
@@ -59,16 +56,18 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: gradientMove 3s linear infinite;
-      text-align:center;
+      text-align:left;
     }
     @keyframes gradientMove { 0% {background-position: 0% 50%;} 100% {background-position: 100% 50%;} }
-    .features-desc {font-size: 19px; margin-bottom:13px; line-height:1.6;text-align:center;}
-    .about-app {margin-top:22px; font-size:18px; color:#38387c; line-height:1.8; max-width:750px;background: #f5f8ff; border-radius:10px; padding:13px 22px; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:center; margin-bottom:15px;}
-
-    .screenshot-section {margin-bottom:0;}
-    .screenshot-section img {max-width:340px;width:100%;border-radius:33px;box-shadow: 0 8px 36px #0002;}
-
-    .gap-2-lines {height:43px;}
+    .features-desc {
+      font-size: 19px; margin-bottom:13px; line-height:1.6;text-align:left;max-width:600px;
+    }
+    .about-app {
+      margin-top:22px; font-size:18px; color:#38387c; line-height:1.8; max-width:600px;background: #f5f8ff; border-radius:10px; padding:13px 22px; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:left; margin-bottom:15px;
+    }
+    /* 2 line gap desktop */
+    .gap-2-lines { height:43px; }
+    /* Desktop Features Cards */
     .features-wrapper {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -87,56 +86,78 @@
       max-width: 330px;
       width: 100%;
       display: flex; flex-direction: column; gap: 6px; font-size: 17px;
+      align-items: flex-start;
     }
     .feature-card div:first-child {font-size: 33px;}
     .feature-card div:nth-child(2) {font-weight: 700; font-size: 21px; margin: 10px 0 6px 0;}
     .footer-bar {text-align: center; padding:28px 0 15px 0; font-size: 16px; color: #b1b1bd;}
+
+    /* Responsive Tablet */
     @media (max-width:1100px) {
       .features-wrapper {grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,auto);}
+      .features-hero-desktop { gap: 18px; }
     }
-    @media (max-width: 750px) {
-      .navbar {padding: 9px 0;}
-      .nav-menu {display: flex; align-items: center; gap: 0;}
-      .navbar-logo .brand { font-size:25px; }
-      .nav-links-desktop { display: none; }
-      .hamburger { display: flex; }
-      .mobile-nav.active { display:block; }
-      .btn, .btn-secondary { font-size:16.5px; padding:11px 17px; }
-      .features-hero {flex-direction:column;align-items:center;gap:14px; padding:18px 0 0 0;}
-      .features-title {font-size:36px;}
-      .about-app {padding-left:8vw;padding-right:8vw;}
-      .features-wrapper {grid-template-columns:1fr; gap:18px;padding:0;}
-      .feature-card {min-width: 70vw; max-width: 70vw; width: 70vw; margin:10px auto;}
+    /* Mobile Features Hero */
+    @media (max-width: 800px) {
+      .features-hero-desktop {
+        display:none;
+      }
+      .features-hero-mobile {
+        display: flex; flex-direction: column; align-items:center; gap: 14px; padding: 18px 0 0 0; width:100%;
+      }
+      .features-title {
+        font-size:36px; text-align:center; margin-top:0; margin-bottom:8px; /* ensure heading at very top */
+      }
+      .screenshot-section {
+        margin-bottom:0; width:100%; display:flex; justify-content:center; align-items:center;
+      }
+      .screenshot-section img {
+        max-width:340px;
+        width:85vw;
+        border-radius:27px;
+        box-shadow: 0 8px 36px #0002;
+        margin: 0 auto;
+        display: block;
+      }
+      .features-desc {
+        font-size:18px; margin-bottom:9px; line-height:1.5; text-align:center; width:100%; padding-left:8vw; padding-right:8vw;
+      }
+      .about-app {
+        margin-top:8px; font-size:16px; color:#38387c; line-height:1.7; max-width:95vw; background: #f5f8ff; border-radius:9px; padding:13px 7vw; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:center;
+      }
+      .gap-2-lines { height:23px; }
+      .features-wrapper {
+        grid-template-columns:1fr; gap:18px;padding:0; margin: 18px 0 24px 0;
+      }
+      .feature-card {
+        min-width: 70vw; max-width:92vw; width:84vw; margin:0 auto; font-size:16px; align-items: flex-start;
+        padding: 20px 7vw 16px 7vw;
+      }
+      .feature-card div:first-child {font-size: 28px;}
+      .feature-card div:nth-child(2) {font-weight: 700; font-size: 18px; margin: 8px 0 4px 0;}
       .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
-      .gap-2-lines {height:23px;}
+    }
+    /* Hide mobile on desktop */
+    @media (min-width: 801px) {
+      .features-hero-mobile { display:none; }
     }
     body.dark-mode {
-      background: #111 !important;
-      color: #fff !important;
+      background: #111 !important; color: #fff !important;
     }
     .dark-mode .navbar,
     .dark-mode .feature-card,
     .dark-mode .footer-bar {
-      background: #181818 !important;
-      color: #fff !important;
-      box-shadow: 0 4px 24px 0 #1113, 0 1.5px 4px #1111;
+      background: #181818 !important; color: #fff !important; box-shadow: 0 4px 24px 0 #1113, 0 1.5px 4px #1111;
     }
     .dark-mode .feature-card { border-color: #242424 !important; }
     .dark-mode .nav-link { color: #fff !important; }
-    .dark-mode .nav-link.active, .dark-mode .nav-link:hover {
-      background: #222 !important;
-      color: #6ea8ff !important;
-    }
-    .dark-mode .navbar-logo .brand, .dark-mode .features-title {color: #fff !important;}
+    .dark-mode .nav-link.active, .dark-mode .nav-link:hover {background: #222 !important; color: #6ea8ff !important;}
+    .dark-mode .navbar-logo .brand, .dark-mode .features-title { color: #fff !important;}
     .dark-mode .nav-btn, .nav-btn, .dark-mode .github-btn,.github-btn{ background: #fff !important; }
     .dark-mode .nav-btn svg, .nav-btn svg, .dark-mode .github-btn svg,.github-btn svg{ fill: #232323 !important; }
     .dark-mode .nav-btn:hover, .dark-mode .github-btn:hover,.nav-btn:hover,.github-btn:hover {background: #f0f0f0 !important;}
     .dark-mode .features-title {
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      background-clip: text !important;
-      color: inherit !important;
-      filter: saturate(1.4) brightness(1.08);
+      -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; color: inherit !important; filter: saturate(1.4) brightness(1.08);
     }
     .dark-mode .about-app {background: #262444 !important;color: #c3c4fa !important;box-shadow:0 2px 24px -7px #12126988;}
   </style>
@@ -196,7 +217,25 @@
   </div>
 </nav>
 <main>
-  <div class="features-hero">
+  <!-- Desktop hero layout -->
+  <div class="features-hero-desktop">
+    <div class="features-img-col">
+      <img src="featuresimage.png" alt="Airolyn Features Screenshot"/>
+    </div>
+    <div class="features-text-col">
+      <div class="features-title">
+        <span class="animate-gradient">Features</span>
+      </div>
+      <div class="features-desc">
+        Discover all the powerful features that make Airolyn the ultimate air quality monitoring app.
+      </div>
+      <div class="about-app">
+        Airolyn is a cutting-edge air quality monitoring app designed to keep you and your loved ones safe and informed, wherever you go. Built for seamless Android experience with modern design in Jetpack Compose, it empowers users to instantly check AQI for any city in India, receive intelligent hourly and health-based notifications, and follow expert breathing routines for better lung health. Utilizing trusted OpenWeatherMap APIs, Airolyn delivers reliable real-time air data and intuitive visual alerts, all in a fast, ad-free and privacy-focused interface. Whether you’re tracking pollution at home, commuting, or traveling, Airolyn helps you make smarter choices for cleaner air and better wellness every day.
+      </div>
+    </div>
+  </div>
+  <!-- Mobile hero layout -->
+  <div class="features-hero-mobile">
     <div class="features-title">
       <span class="animate-gradient">Features</span>
     </div>
