@@ -18,6 +18,7 @@
     .navbar-logo img { height: 40px; width: auto; display: inline-block;}
     .brand { font-weight: 700; letter-spacing: .5px; }
     .nav-menu { display: flex; align-items: center; gap: 14px;}
+    .nav-links-desktop {display:flex; gap:14px;}
     .nav-link {border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;text-decoration: none; border-radius: 9px; transition: .18s;}
     .nav-link.active, .nav-link:hover { background: #232323; color:#6ea8ff; }
     .nav-btn, .github-btn {
@@ -33,6 +34,15 @@
     .mobile-nav .nav-link {color:#fff; background:none; font-size:20px; width:100%; display:block; padding:13px 26px; border-radius:0; text-align:left;}
     .mobile-nav .nav-link:hover {background:#333; color:#6ea8ff;}
     .mobile-nav.active { display:block; }
+    @media (max-width: 800px) {
+      .nav-links-desktop {display: none;}
+      .hamburger { display:flex;}
+    }
+    @media (min-width: 801px) {
+      .mobile-nav {display:none !important;}
+      .hamburger {display:none !important;}
+      .nav-links-desktop {display: flex;}
+    }
 
     /* Desktop Features Hero Layout */
     .features-hero-desktop {
@@ -65,9 +75,7 @@
     .about-app {
       margin-top:22px; font-size:18px; color:#38387c; line-height:1.8; max-width:600px;background: #f5f8ff; border-radius:10px; padding:13px 22px; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:left; margin-bottom:15px;
     }
-    /* 2 line gap desktop */
     .gap-2-lines { height:43px; }
-    /* Desktop Features Cards */
     .features-wrapper {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -106,7 +114,7 @@
         display: flex; flex-direction: column; align-items:center; gap: 14px; padding: 18px 0 0 0; width:100%;
       }
       .features-title {
-        font-size:36px; text-align:center; margin-top:0; margin-bottom:8px; /* ensure heading at very top */
+        font-size:36px; text-align:center; margin-top:0; margin-bottom:8px;
       }
       .screenshot-section {
         margin-bottom:0; width:100%; display:flex; justify-content:center; align-items:center;
@@ -130,11 +138,11 @@
         grid-template-columns:1fr; gap:18px;padding:0; margin: 18px 0 24px 0;
       }
       .feature-card {
-        min-width: 70vw; max-width:92vw; width:84vw; margin:0 auto; font-size:16px; align-items: flex-start;
-        padding: 20px 7vw 16px 7vw;
+        min-width: 55vw; max-width: 82vw; width: 77vw; margin:0 auto; font-size:16px; align-items: flex-start;
+        padding: 20px 6vw 14px 6vw;
       }
-      .feature-card div:first-child {font-size: 28px;}
-      .feature-card div:nth-child(2) {font-weight: 700; font-size: 18px; margin: 8px 0 4px 0;}
+      .feature-card div:first-child {font-size: 25px;}
+      .feature-card div:nth-child(2) {font-weight: 700; font-size: 16.5px; margin: 8px 0 4px 0;}
       .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
     }
     /* Hide mobile on desktop */
