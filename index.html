@@ -13,6 +13,8 @@
       color: #fff;
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 32px; min-height: 56px; box-shadow: 0 3px 24px -14px #0005;
+      position: relative;
+      z-index:2;
     }
     .navbar-logo {
       display: flex; gap:8px; align-items: center; font-size: 30px;
@@ -78,16 +80,53 @@
     .feature-card div.title {font-weight: 700; font-size: 18px; margin: 6px 0 5px 0;}
     .footer-bar {text-align: center; padding:28px 0 15px 0; font-size: 16px; color: #b1b1bd;}
     .gap-2-lines {height:43px;}
+    /* Hamburger menu styles */
+    .hamburger {
+      display:none;
+      flex-direction: column;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left:8px;
+      border: none;
+      align-items: center;
+    }
+    .hamburger span {
+      height: 3px; width: 26px; background: #222; border-radius:2px; margin: 3.4px 0; display: block;
+      transition: all 0.3s;
+    }
+    .mobile-nav { display:none; position:absolute; right:10px; top:58px; background:#222; border-radius:10px; box-shadow:0 6px 32px #0005; z-index:22; min-width:160px;}
+    .mobile-nav .nav-link {
+      color:#fff; background:none; font-size:20px; width:100%; display:block; padding:13px 26px; border-radius:0; text-align:left;
+    }
+    .mobile-nav .nav-link:hover {background:#333; color:#6ea8ff;}
     @media (max-width:1100px) {
       .features-wrapper {grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,auto);}
     }
     @media (max-width: 750px) {
-      .features-wrapper {grid-template-columns:1fr; gap:22px; padding: 0 10px;}
-      .feature-card {min-width: 150px; max-width:98vw;}
-      .hero-section {flex-direction: column;}
-      .hero-image img {max-width:85vw;}
-      .nav-menu {gap:5px;}
-      .navbar {padding: 12px 3vw;}
+      .navbar {
+        padding: 9px 2vw;
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
+      .navbar-logo .brand { font-size:25px; }
+      .nav-links-desktop { display: none; }
+      .hamburger { display: flex; }
+      .dark-mode .hamburger { background: #222; }
+      .mobile-nav { display:none;}
+      .mobile-nav.active { display:block; }
+      .btn, .btn-secondary { font-size:16.5px; padding:11px 17px; }
+      .hero-section { flex-direction: column; padding: 27px 3vw 0 3vw; gap:28px;}
+      .hero-title { font-size:27px; }
+      .features-wrapper {grid-template-columns:1fr; gap:18px; padding: 0 3vw;}
+      .feature-card {min-width: 70vw; max-width: 96vw; margin:auto;}
+      .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
     }
     body.dark-mode {
       background: #111 !important;
@@ -149,11 +188,24 @@
           setDarkMode(wantDark);
         });
       }
-
-      const sourceBtn = document.getElementById("view-source-btn");
-      if(sourceBtn) {
-        sourceBtn.addEventListener("click", function() {
+      const githubBtn = document.getElementById("github-btn");
+      if(githubBtn) {
+        githubBtn.addEventListener("click", function() {
           window.open("https://github.com/Airolyn/Airolyn", "_blank");
+        });
+      }
+
+      const hamburger = document.getElementById("nav-hamburger");
+      const mobileNav = document.getElementById("mobile-nav");
+      if(hamburger && mobileNav){
+        hamburger.addEventListener("click", function() {
+          mobileNav.classList.toggle("active");
+        });
+        // Click outside closes menu
+        document.addEventListener("click", function(e){
+          if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+            mobileNav.classList.remove("active");
+          }
         });
       }
     });
@@ -167,13 +219,27 @@
         <span class="brand">Airolyn</span>
       </div>
       <div class="nav-menu">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="features.html">Features</a>
-        <a class="nav-link" href="privacy.html">Privacy</a>
-        <a class="nav-link" href="terms.html">Terms</a>
         <button class="nav-btn" id="theme-toggle-btn" title="Theme">
           <svg viewBox="0 0 24 24"><path d="M19.5 12.75A7.46 7.46 0 0 1 12 20.25a7.5 7.5 0 0 1 0-15a.75.75 0 0 1 .69 1.02A6.001 6.001 0 0 0 18.97 14a.75.75 0 0 1 .53.99z" /></svg>
         </button>
+        <button class="github-btn" id="github-btn" title="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.42c.6.12.82-.26.82-.58c0-.29 0-1.05 0-2.07c-3.34 .73-4-1.63-4-1.63a3.15 3.15 0 0 0-1.32-1.74c-1.08-.74 .08-.73 .08-.73a2.5 2.5 0 0 1 1.81 1.21a2.53 2.53 0 0 0 3.47 1a2.51 2.51 0 0 1 .75-1.56c-2.67-.3-5.47-1.33-5.47-5.84a4.57 4.57 0 0 1 1.2-3.18a4.24 4.24 0 0 1 .11-3.14s1-.33 3.3 1.22a11.38 11.38 0 0 1 6 0c2.3-1.55 3.3-1.22 3.3-1.22a4.24 4.24 0 0 1 .11 3.14a4.57 4.57 0 0 1 1.2 3.18c0 4.52-2.8 5.53-5.48 5.83a2.82 2.82 0 0 1 .8 2.18c0 1.57 0 2.83 0 3.21c0 .32 .21 .7 .82 .58A12 12 0 0 0 12 .3z"></path></svg>
+        </button>
+        <div class="nav-links-desktop">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="features.html">Features</a>
+          <a class="nav-link" href="privacy.html">Privacy</a>
+          <a class="nav-link" href="terms.html">Terms</a>
+        </div>
+        <button class="hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="mobile-nav" id="mobile-nav">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="features.html">Features</a>
+          <a class="nav-link" href="privacy.html">Privacy</a>
+          <a class="nav-link" href="terms.html">Terms</a>
+        </div>
       </div>
     </nav>
   </header>
@@ -189,7 +255,7 @@
         </div>
         <div class="hero-buttons">
           <a class="btn" href="#">Download App</a>
-          <button class="btn btn-secondary" id="view-source-btn">View Source</button>
+          <button class="btn btn-secondary" id="view-source-btn" onclick="window.open('https://github.com/Airolyn/Airolyn','_blank')">View Source</button>
         </div>
       </div>
       <div class="hero-image">
