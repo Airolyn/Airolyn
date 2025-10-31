@@ -5,52 +5,55 @@
   <title>Features | Airolyn App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      margin: 0; font-family: 'Inter', sans-serif; background: #f6f7fb; color: #222;
-    }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #f6f7fb; color: #222;}
     .navbar {
       background: #181818;
       color: #fff;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 32px; min-height: 56px; box-shadow: 0 3px 24px -14px #0005;
+      width: 100vw; min-width: 100vw; left:0; right:0; position:relative; z-index:2;
+      box-sizing: border-box;padding: 12px 0;min-height: 56px;box-shadow: 0 3px 24px -14px #0005;
     }
-    .navbar-logo {
-      display: flex; gap:8px; align-items: center; font-size: 30px;
-    }
+    .navbar-logo {display: flex; gap:8px; align-items: center; font-size: 30px; margin-left: 22px;}
     .navbar-logo img { height: 40px; width: auto; display: inline-block;}
     .brand { font-weight: 700; letter-spacing: .5px; }
     .nav-menu { display: flex; align-items: center; gap: 14px;}
-    .nav-link {
-      border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;
-      text-decoration: none; border-radius: 9px; transition: .18s;
-    }
+    .nav-link {border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;text-decoration: none; border-radius: 9px; transition: .18s;}
     .nav-link.active, .nav-link:hover { background: #232323; color:#6ea8ff; }
-    .nav-btn { border: none; background: #fff; padding:6px 12px; border-radius: 13px;
-      margin-left: 2px; cursor: pointer; display: flex; align-items:center; justify-content: center; transition: background .25s; }
-    .nav-btn svg { width: 28px; height: 28px; fill: #232323; }
-    .nav-btn:hover { background: #f0f0f0; }
-    .github-btn {
-      border: none; background: #fff; 
-      padding: 4px 12px; border-radius: 11px; margin-left: 10px;
-      cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s;
-      height:38px;
+    .nav-btn, .github-btn {
+      border: none; background: #fff; padding:6px 12px; border-radius: 13px;
+      margin-left: 2px; cursor: pointer; display: flex; align-items:center; justify-content: center; transition: background .25s;}
+    .nav-btn svg, .github-btn svg { width: 28px; height: 28px; }
+    .nav-btn svg { fill: #232323; }
+    .github-btn svg { fill: #232323; }
+    .nav-btn:hover, .github-btn:hover  { background: #f0f0f0; }
+
+    .hamburger {
+      display:none;
+      flex-direction: column;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: #fff; /* always white */
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left:8px;
+      border: none;
+      align-items: center;
     }
-    .github-btn svg { width: 24px; height: 24px; fill: #232323; margin-right:4px; }
-    .github-btn span { color:#232323; font-weight:500; font-size:17px;}
-    .github-btn:hover { background: #f0f0f0; }
+    .hamburger span {
+      height: 3px; width: 26px; background: #222 !important; /* always black */
+      border-radius:2px; margin: 3.4px 0; display: block;
+      transition: all 0.3s;
+    }
+    .mobile-nav { display:none; position:absolute; right:10px; top:58px; background:#222; border-radius:10px; box-shadow:0 6px 32px #0005; z-index:22; min-width:160px;}
+    .mobile-nav .nav-link {
+      color:#fff; background:none; font-size:20px; width:100%; display:block; padding:13px 26px; border-radius:0; text-align:left;
+    }
+    .mobile-nav .nav-link:hover {background:#333; color:#6ea8ff;}
 
     .features-hero {
-      display: flex; align-items:flex-start; gap:32px; padding: 48px 6vw 0 6vw; flex-wrap:wrap;
-    }
-    .screenshot-section {
-      max-width: 340px; width: 100%; display: flex; flex-direction: column; align-items: center;
-    }
-    .screenshot-section img {
-      max-width:340px; width:100%; border-radius:33px; box-shadow: 0 8px 36px #0002;
-    }
-    .features-hero-text {
-      flex: 1; min-width:220px; display: flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; margin-top:0;
-      margin-bottom:20px;
+      display: flex; flex-direction: row;
+      align-items:flex-start; gap:32px; padding: 48px 6vw 0 6vw; flex-wrap: wrap;
     }
     .features-title {
       font-size:44px; font-weight:700; margin-bottom:9px;
@@ -60,17 +63,15 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: gradientMove 3s linear infinite;
+      text-align:left;
     }
-    @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      100% {background-position: 100% 50%;}
-    }
+    @keyframes gradientMove { 0% {background-position: 0% 50%;} 100% {background-position: 100% 50%;} }
     .features-desc {font-size: 19px; margin-bottom:13px; line-height:1.6;}
     .about-app {
       margin-top:22px; font-size:18px; color:#38387c; line-height:1.8; max-width:750px;
       background: #f5f8ff; border-radius:10px; padding:13px 22px; box-shadow:0 2px 24px -7px #c3c4fa44;
-    }
-    /* Feature Boxes */
+      margin-bottom:15px;} /* extra margin for mobile */
+
     .gap-2-lines {height:43px;}
     .features-wrapper {
       display: grid;
@@ -98,17 +99,32 @@
       .features-wrapper {grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,auto);}
     }
     @media (max-width: 800px) {
-      .features-hero {flex-direction:column;align-items:center;gap:24px;}
-      .screenshot-section {max-width:98vw;}
-      .features-hero-text {width:100%;}
-      .features-title, .features-desc, .about-app {text-align:center;align-self:center;}
-      .gap-2-lines {height:26px;}
+      .features-hero {flex-direction:column;align-items:center;gap:24px;padding-top:18px;}
     }
     @media (max-width: 750px) {
-      .features-wrapper {grid-template-columns:1fr; gap:22px; padding: 0 10px;}
-      .feature-card {min-width: 150px; max-width:98vw;}
+      .navbar {
+        padding: 9px 0;
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
+      .navbar-logo .brand { font-size:25px; }
+      .nav-links-desktop { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav.active { display:block; }
+      .btn, .btn-secondary { font-size:16.5px; padding:11px 17px; }
+      .features-hero {flex-direction:column; align-items:center; gap:14px; padding:18px 0 0 0;}
+      .features-title {font-size:36px; text-align:center; margin-top:0;}
+      .features-desc {text-align:center;}
+      .about-app {text-align:center;align-self:center;padding-left:8vw;padding-right:8vw;}
+      .screenshot-section {margin-bottom:9px;}
+      .features-wrapper {grid-template-columns:1fr; gap:18px; padding: 0 0;}
+      .feature-card {min-width: 70vw; max-width: 70vw; width: 70vw; margin:10px auto;}
+      .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
+      .gap-2-lines {height:23px;}
     }
-    /* --- DARK MODE --- */
     body.dark-mode {
       background: #111 !important;
       color: #fff !important;
@@ -126,10 +142,10 @@
       background: #222 !important;
       color: #6ea8ff !important;
     }
-    .dark-mode .navbar-logo .brand {color: #fff !important;}
-    .dark-mode .nav-btn, .nav-btn { background: #fff !important; }
-    .dark-mode .nav-btn svg, .nav-btn svg { fill: #232323 !important; }
-    .dark-mode .nav-btn:hover, .nav-btn:hover {background: #f0f0f0 !important;}
+    .dark-mode .navbar-logo .brand, .dark-mode .features-title {color: #fff !important;}
+    .dark-mode .nav-btn, .nav-btn, .dark-mode .github-btn,.github-btn{ background: #fff !important; }
+    .dark-mode .nav-btn svg, .nav-btn svg, .dark-mode .github-btn svg,.github-btn svg{ fill: #232323 !important; }
+    .dark-mode .nav-btn:hover, .dark-mode .github-btn:hover,.nav-btn:hover,.github-btn:hover {background: #f0f0f0 !important;}
     .dark-mode .features-title {
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
@@ -142,13 +158,6 @@
       color: #c3c4fa !important;
       box-shadow:0 2px 24px -7px #12126988;
     }
-    .dark-mode .github-btn {
-      background: #fff !important;
-    }
-    .dark-mode .github-btn:hover {
-      background: #222 !important;
-    }
-    .dark-mode .github-btn span { color:#232323 !important;}
   </style>
   <script>
     function setDarkMode(on) {
@@ -158,12 +167,20 @@
     document.addEventListener("DOMContentLoaded", function() {
       const savedTheme = localStorage.getItem('airol-theme');
       if (savedTheme === 'dark') setDarkMode(true);
-
       const themeBtn = document.getElementById("theme-toggle-btn");
-      if(themeBtn) {
-        themeBtn.addEventListener("click", function() {
-          const wantDark = !document.body.classList.contains("dark-mode");
-          setDarkMode(wantDark);
+      if(themeBtn) {themeBtn.addEventListener("click",function(){setDarkMode(!document.body.classList.contains("dark-mode"));});}
+
+      // Hamburger menu logic
+      const hamburger = document.getElementById("nav-hamburger");
+      const mobileNav = document.getElementById("mobile-nav");
+      if(hamburger && mobileNav){
+        hamburger.addEventListener("click", function() {
+          mobileNav.classList.toggle("active");
+        });
+        document.addEventListener("click", function(e){
+          if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+            mobileNav.classList.remove("active");
+          }
         });
       }
     });
@@ -176,34 +193,42 @@
     <span class="brand">Airolyn</span>
   </div>
   <div class="nav-menu">
-    <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link active" href="features.html">Features</a>
-    <a class="nav-link" href="privacy.html">Privacy</a>
-    <a class="nav-link" href="terms.html">Terms</a>
+    <div class="nav-links-desktop">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link active" href="features.html">Features</a>
+      <a class="nav-link" href="privacy.html">Privacy</a>
+      <a class="nav-link" href="terms.html">Terms</a>
+    </div>
     <button class="nav-btn" id="theme-toggle-btn" title="Theme">
-      <svg viewBox="0 0 24 24"><path d="M19.5 12.75A7.46 7.46 0 0 1 12 20.25a7.5 7.5 0 0 1 0-15a.75.75 0 0 1 .69 1.02A6.001 6.001 0 0 0 18.97 14a.75.75 0 0 1 .53.99z" /></svg>
+      <svg viewBox="0 0 24 24"><path d="M19.5 12.75A7.46 7.46 0 0 1 12 20.25a7.5 7.5 0 0 1 0-15a.75.75 0 0 1 .69 1.02A6.001 6.001 0 0 0 18.97 14a.75.75 0 0 1 .53.99z"/></svg>
     </button>
-    <a class="github-btn" href="https://github.com/yourusername/yourrepo" target="_blank">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3C5.4.3 0 5.9 0 12.6c0 5.4 3.4 9.9 8.2 11.5.6.1.8-.2.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.6-1.6-1.6-2.1-1.6-2.1-1.2-.8.1-.8.1-.8 1.3.1 1.9 1.4 1.9 1.4 1.2 2 3 .7 3.7.5.1-.8.5-1.4.8-1.7-2.7-.3-5.6-1.3-5.6-5.7 0-1.3.4-2.3 1.1-3.2 0-.3-.5-1.2.1-2.6 0 0 .9-.3 3.2 1.1a10.7 10.7 0 0 1 5.8 0C17 6.8 17.9 7.1 17.9 7.1c.6 1.4.1 2.3.1 2.6.7.8 1.1 1.9 1.1 3.2 0 4.3-2.9 5.3-5.6 5.7.5.4.9 1.2.9 2.4V23c0 .4.2.7.8.6C20.6 22.5 24 18 24 12.6 24 5.9 18.6.3 12 .3z"/></svg>
-      <span>GitHub</span>
-    </a>
+    <button class="github-btn" id="github-btn" title="GitHub" onclick="window.open('https://github.com/Airolyn/Airolyn','_blank')">
+      <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.42c.6.12.82-.26.82-.58c0-.29 0-1.05 0-2.07c-3.34 .73-4-1.63-4-1.63a3.15 3.15 0 0 0-1.32-1.74c-1.08-.74 .08-.73 .08-.73a2.5 2.5 0 0 1 1.81 1.21a2.53 2.53 0 0 0 3.47 1a2.51 2.51 0 0 1 .75-1.56c-2.67-.3-5.47-1.33-5.47-5.84a4.57 4.57 0 0 1 1.2-3.18a4.24 4.24 0 0 1 .11-3.14s1-.33 3.3 1.22a11.38 11.38 0 0 1 6 0c2.3-1.55 3.3-1.22 3.3-1.22a4.24 4.24 0 0 1 .11 3.14a4.57 4.57 0 0 1 1.2 3.18c0 4.52-2.8 5.53-5.48 5.83a2.82 2.82 0 0 1 .8 2.18c0 1.57 0 2.83 0 3.21c0 .32 .21 .7 .82 .58A12 12 0 0 0 12 .3z"></path></svg>
+    </button>
+    <button class="hamburger" id="nav-hamburger" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-nav" id="mobile-nav">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link active" href="features.html">Features</a>
+      <a class="nav-link" href="privacy.html">Privacy</a>
+      <a class="nav-link" href="terms.html">Terms</a>
+    </div>
   </div>
 </nav>
 <main>
   <div class="features-hero">
-    <div class="screenshot-section">
+    <div class="features-title">
+      <span class="animate-gradient">Features</span>
+    </div>
+    <div class="screenshot-section" style="margin:0 auto;">
       <img src="featuresimage.png" alt="Airolyn Features Screenshot"/>
     </div>
-    <div class="features-hero-text" style="margin-top:0;">
-      <div class="features-title">
-        <span class="animate-gradient">Features</span>
-      </div>
-      <div class="features-desc">
-        Discover all the powerful features that make Airolyn the ultimate air quality monitoring app.
-      </div>
-      <div class="about-app">
-        Airolyn is a cutting-edge air quality monitoring app designed to keep you and your loved ones safe and informed, wherever you go. Built for seamless Android experience with modern design in Jetpack Compose, it empowers users to instantly check AQI for any city in India, receive intelligent hourly and health-based notifications, and follow expert breathing routines for better lung health. Utilizing trusted OpenWeatherMap APIs, Airolyn delivers reliable real-time air data and intuitive visual alerts, all in a fast, ad-free and privacy-focused interface. Whether you’re tracking pollution at home, commuting, or traveling, Airolyn helps you make smarter choices for cleaner air and better wellness every day.
-      </div>
+    <div class="features-desc">
+      Discover all the powerful features that make Airolyn the ultimate air quality monitoring app.
+    </div>
+    <div class="about-app">
+      Airolyn is a cutting-edge air quality monitoring app designed to keep you and your loved ones safe and informed, wherever you go. Built for seamless Android experience with modern design in Jetpack Compose, it empowers users to instantly check AQI for any city in India, receive intelligent hourly and health-based notifications, and follow expert breathing routines for better lung health. Utilizing trusted OpenWeatherMap APIs, Airolyn delivers reliable real-time air data and intuitive visual alerts, all in a fast, ad-free and privacy-focused interface. Whether you’re tracking pollution at home, commuting, or traveling, Airolyn helps you make smarter choices for cleaner air and better wellness every day.
     </div>
   </div>
   <div class="gap-2-lines"></div>
