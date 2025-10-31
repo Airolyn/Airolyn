@@ -5,28 +5,43 @@
   <title>Welcome to Airolyn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin: 0; font-family: 'Inter', sans-serif; background: #f6f7fb; color: #222;}
+    body {
+      margin: 0; font-family: 'Inter', sans-serif; background: #f6f7fb; color: #222;
+    }
     .navbar {
       background: #181818;
       color: #fff;
       display: flex; align-items: center; justify-content: space-between;
-      width: 100vw; min-width: 100vw; left:0; right:0; position:relative; z-index:2;
-      box-sizing: border-box; padding: 12px 0; min-height: 56px; box-shadow: 0 3px 24px -14px #0005;
+      width: 100vw;
+      min-width: 100vw;
+      left: 0; right: 0;
+      position: relative;
+      z-index:2;
+      box-sizing: border-box;
+      padding: 12px 0;
+      min-height: 56px;
+      box-shadow: 0 3px 24px -14px #0005;
     }
-    .navbar-logo {display: flex; gap:8px; align-items: center; font-size: 30px; margin-left: 22px;}
+    .navbar-logo {
+      display: flex; gap:8px; align-items: center; font-size: 30px; margin-left: 22px;
+    }
     .navbar-logo img { height: 40px; width: auto; display: inline-block;}
     .brand { font-weight: 700; letter-spacing: .5px; }
     .nav-menu { display: flex; align-items: center; gap: 14px;}
-    .nav-link {border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;text-decoration: none; border-radius: 9px; transition: .18s;}
+    .nav-link {
+      border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;
+      text-decoration: none; border-radius: 9px; transition: .18s;
+    }
     .nav-link.active, .nav-link:hover { background: #232323; color:#6ea8ff; }
     .nav-btn, .github-btn {
       border: none; background: #fff; padding:6px 12px; border-radius: 13px;
-      margin-left: 2px; cursor: pointer; display: flex; align-items:center; justify-content: center; transition: background .25s;}
+      margin-left: 2px; cursor: pointer; display: flex; align-items:center; justify-content: center; transition: background .25s;
+    }
     .nav-btn svg, .github-btn svg { width: 28px; height: 28px; }
     .nav-btn svg { fill: #232323; }
     .github-btn svg { fill: #232323; }
     .nav-btn:hover, .github-btn:hover  { background: #f0f0f0; }
-    .hero-section { display:flex; align-items:center;justify-content:space-between; gap:22px; padding: 48px 0 0 0; max-width:900px; margin:0 auto;}
+    .hero-section { display:flex; align-items:center;justify-content:space-between; gap:22px; padding: 48px 6vw 0 6vw;}
     .hero-title { font-size:44px; font-weight: 700; margin-bottom:9px;}
     .animate-gradient {
       background: linear-gradient(90deg, #6ea8ff, #b187ff, #e6b0ff, #6ea8ff);
@@ -60,8 +75,13 @@
       padding: 24px 20px 19px 20px;
       border-radius: 24px;
       box-shadow: 0 4px 24px 0 #3736400a, 0 1.5px 4px #2221;
-      min-width: 160px; max-width: 330px; width: 100%;
-      display: flex; flex-direction: column; gap: 6px; font-size: 15px;
+      min-width: 160px;
+      max-width: 330px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 15px;
     }
     .feature-card div.title {font-weight: 700; font-size: 18px; margin: 6px 0 5px 0;}
     .footer-bar {text-align: center; padding:28px 0 15px 0; font-size: 16px; color: #b1b1bd;}
@@ -71,12 +91,17 @@
       display:none;
       flex-direction: column;
       justify-content: center;
-      width: 38px; height: 38px;
-      background: #fff; border-radius: 10px; cursor: pointer;
-      margin-left:8px; border: none; align-items: center;
+      width: 38px;
+      height: 38px;
+      background: #fff; /* always white */
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left:8px;
+      border: none;
+      align-items: center;
     }
     .hamburger span {
-      height: 3px; width: 26px; background: #222 !important;
+      height: 3px; width: 26px; background: #222 !important; /* always black */
       border-radius:2px; margin: 3.4px 0; display: block;
       transition: all 0.3s;
     }
@@ -89,20 +114,24 @@
       .features-wrapper {grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,auto);}
     }
     @media (max-width: 750px) {
-      .navbar {padding: 9px 0;}
+      .navbar {
+        padding: 9px 0;
+      }
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
       .navbar-logo .brand { font-size:25px; }
       .nav-links-desktop { display: none; }
-      .nav-menu {display: flex;align-items:center;gap:0;}
       .hamburger { display: flex; }
       .mobile-nav.active { display:block; }
       .btn, .btn-secondary { font-size:16.5px; padding:11px 17px; }
-      .hero-section { flex-direction: column; padding: 27px 0 0 0; gap:28px; max-width: none;}
-      .hero-text, .hero-image { padding-left:8vw; padding-right:8vw;}
+      .hero-section { flex-direction: column; padding: 27px 3vw 0 3vw; gap:28px;}
       .hero-title { font-size:27px; text-align:center; }
       .animate-gradient { font-size:40px; }
-      .features-wrapper {grid-template-columns:1fr; gap:18px; padding: 0 8vw;}
+      .features-wrapper {grid-template-columns:1fr; gap:18px; padding: 0 3vw;}
       .feature-card {min-width: 70vw; max-width: 70vw; width: 70vw; margin:10px auto;}
-      .features-heading {padding-left:8vw;padding-right:8vw;}
       .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
     }
     body.dark-mode {
@@ -123,13 +152,24 @@
       color: #6ea8ff !important;
     }
     .dark-mode .btn { background: #fff !important; color: #181818 !important; }
-    .dark-mode .btn-secondary {background: #282828 !important; color: #fff !important; border-color: #444 !important;}
-    .dark-mode .navbar-logo .brand, .dark-mode .features-heading { color: #fff !important;}
-    .dark-mode .github-btn, .dark-mode .nav-btn, .github-btn, .nav-btn {
+    .dark-mode .btn-secondary {
+      background: #282828 !important; color: #fff !important; border-color: #444 !important;
+    }
+    .dark-mode .navbar-logo .brand, .dark-mode .features-heading {
+      color: #fff !important;
+    }
+    .dark-mode .github-btn,
+    .dark-mode .nav-btn,
+    .github-btn, .nav-btn {
       background: #fff !important;
     }
-    .dark-mode .github-btn svg, .dark-mode .nav-btn svg, .github-btn svg, .nav-btn svg { fill: #232323 !important; }
-    .dark-mode .nav-btn:hover, .dark-mode .github-btn:hover, .nav-btn:hover, .github-btn:hover {background: #f0f0f0 !important;}
+    .dark-mode .github-btn svg,
+    .dark-mode .nav-btn svg,
+    .github-btn svg, .nav-btn svg {
+      fill: #232323 !important;
+    }
+    .dark-mode .nav-btn:hover, .dark-mode .github-btn:hover,
+    .nav-btn:hover, .github-btn:hover {background: #f0f0f0 !important;}
     .dark-mode .hero-title .animate-gradient {
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
@@ -137,6 +177,7 @@
       color: inherit !important;
       filter: saturate(1.4) brightness(1.08);
     }
+    /* Hamburger stays black lines in white - no theme switch! */
   </style>
   <script>
     function setDarkMode(on) {
@@ -148,9 +189,18 @@
       if (savedTheme === 'dark') setDarkMode(true);
 
       const themeBtn = document.getElementById("theme-toggle-btn");
-      if(themeBtn) { themeBtn.addEventListener("click",function(){setDarkMode(!document.body.classList.contains("dark-mode"));}); }
+      if(themeBtn) {
+        themeBtn.addEventListener("click", function() {
+          const wantDark = !document.body.classList.contains("dark-mode");
+          setDarkMode(wantDark);
+        });
+      }
       const githubBtn = document.getElementById("github-btn");
-      if(githubBtn) { githubBtn.addEventListener("click",function(){window.open("https://github.com/Airolyn/Airolyn","_blank");}); }
+      if(githubBtn) {
+        githubBtn.addEventListener("click", function() {
+          window.open("https://github.com/Airolyn/Airolyn", "_blank");
+        });
+      }
 
       const hamburger = document.getElementById("nav-hamburger");
       const mobileNav = document.getElementById("mobile-nav");
@@ -158,6 +208,7 @@
         hamburger.addEventListener("click", function() {
           mobileNav.classList.toggle("active");
         });
+        // Click outside closes menu
         document.addEventListener("click", function(e){
           if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
             mobileNav.classList.remove("active");
@@ -176,13 +227,13 @@
       </div>
       <div class="nav-menu">
         <button class="nav-btn" id="theme-toggle-btn" title="Theme">
-          <svg viewBox="0 0 24 24"><path d="M19.5 12.75A7.46 7.46 0 0 1 12 20.25a7.5 7.5 0 0 1 0-15a.75.75 0 0 1 .69 1.02A6.001 6.001 0 0 0 18.97 14a.75.75 0 0 1 .53.99z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M19.5 12.75A7.46 7.46 0 0 1 12 20.25a7.5 7.5 0 0 1 0-15a.75.75 0 0 1 .69 1.02A6.001 6.001 0 0 0 18.97 14a.75.75 0 0 1 .53.99z" /></svg>
         </button>
         <button class="github-btn" id="github-btn" title="GitHub">
           <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.42c.6.12.82-.26.82-.58c0-.29 0-1.05 0-2.07c-3.34 .73-4-1.63-4-1.63a3.15 3.15 0 0 0-1.32-1.74c-1.08-.74 .08-.73 .08-.73a2.5 2.5 0 0 1 1.81 1.21a2.53 2.53 0 0 0 3.47 1a2.51 2.51 0 0 1 .75-1.56c-2.67-.3-5.47-1.33-5.47-5.84a4.57 4.57 0 0 1 1.2-3.18a4.24 4.24 0 0 1 .11-3.14s1-.33 3.3 1.22a11.38 11.38 0 0 1 6 0c2.3-1.55 3.3-1.22 3.3-1.22a4.24 4.24 0 0 1 .11 3.14a4.57 4.57 0 0 1 1.2 3.18c0 4.52-2.8 5.53-5.48 5.83a2.82 2.82 0 0 1 .8 2.18c0 1.57 0 2.83 0 3.21c0 .32 .21 .7 .82 .58A12 12 0 0 0 12 .3z"></path></svg>
         </button>
         <div class="nav-links-desktop">
-          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="features.html">Features</a>
           <a class="nav-link" href="privacy.html">Privacy</a>
           <a class="nav-link" href="terms.html">Terms</a>
@@ -191,7 +242,7 @@
           <span></span><span></span><span></span>
         </button>
         <div class="mobile-nav" id="mobile-nav">
-          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="features.html">Features</a>
           <a class="nav-link" href="privacy.html">Privacy</a>
           <a class="nav-link" href="terms.html">Terms</a>
