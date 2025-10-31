@@ -26,14 +26,13 @@
     .nav-btn svg { fill: #232323; }
     .github-btn svg { fill: #232323; }
     .nav-btn:hover, .github-btn:hover  { background: #f0f0f0; }
-
     .hamburger {
       display:none;
       flex-direction: column;
       justify-content: center;
       width: 38px;
       height: 38px;
-      background: #fff; /* always white */
+      background: #fff;
       border-radius: 10px;
       cursor: pointer;
       margin-left:8px;
@@ -41,36 +40,33 @@
       align-items: center;
     }
     .hamburger span {
-      height: 3px; width: 26px; background: #222 !important; /* always black */
+      height: 3px; width: 26px; background: #222 !important;
       border-radius:2px; margin: 3.4px 0; display: block;
       transition: all 0.3s;
     }
     .mobile-nav { display:none; position:absolute; right:10px; top:58px; background:#222; border-radius:10px; box-shadow:0 6px 32px #0005; z-index:22; min-width:160px;}
-    .mobile-nav .nav-link {
-      color:#fff; background:none; font-size:20px; width:100%; display:block; padding:13px 26px; border-radius:0; text-align:left;
-    }
+    .mobile-nav .nav-link {color:#fff; background:none; font-size:20px; width:100%; display:block; padding:13px 26px; border-radius:0; text-align:left;}
     .mobile-nav .nav-link:hover {background:#333; color:#6ea8ff;}
 
     .features-hero {
-      display: flex; flex-direction: row;
-      align-items:flex-start; gap:32px; padding: 48px 6vw 0 6vw; flex-wrap: wrap;
+      display: flex;flex-direction: column;align-items:center;gap:22px; padding: 48px 6vw 0 6vw; flex-wrap: wrap;
     }
     .features-title {
-      font-size:44px; font-weight:700; margin-bottom:9px;
+      font-size:44px; font-weight:700; margin-bottom:12px; margin-top:0;
       background: linear-gradient(90deg, #6ea8ff, #b187ff, #e6b0ff, #6ea8ff);
       background-size: 400% 400%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: gradientMove 3s linear infinite;
-      text-align:left;
+      text-align:center;
     }
     @keyframes gradientMove { 0% {background-position: 0% 50%;} 100% {background-position: 100% 50%;} }
-    .features-desc {font-size: 19px; margin-bottom:13px; line-height:1.6;}
-    .about-app {
-      margin-top:22px; font-size:18px; color:#38387c; line-height:1.8; max-width:750px;
-      background: #f5f8ff; border-radius:10px; padding:13px 22px; box-shadow:0 2px 24px -7px #c3c4fa44;
-      margin-bottom:15px;} /* extra margin for mobile */
+    .features-desc {font-size: 19px; margin-bottom:13px; line-height:1.6;text-align:center;}
+    .about-app {margin-top:22px; font-size:18px; color:#38387c; line-height:1.8; max-width:750px;background: #f5f8ff; border-radius:10px; padding:13px 22px; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:center; margin-bottom:15px;}
+
+    .screenshot-section {margin-bottom:0;}
+    .screenshot-section img {max-width:340px;width:100%;border-radius:33px;box-shadow: 0 8px 36px #0002;}
 
     .gap-2-lines {height:43px;}
     .features-wrapper {
@@ -98,29 +94,18 @@
     @media (max-width:1100px) {
       .features-wrapper {grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,auto);}
     }
-    @media (max-width: 800px) {
-      .features-hero {flex-direction:column;align-items:center;gap:24px;padding-top:18px;}
-    }
     @media (max-width: 750px) {
-      .navbar {
-        padding: 9px 0;
-      }
-      .nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 0;
-      }
+      .navbar {padding: 9px 0;}
+      .nav-menu {display: flex; align-items: center; gap: 0;}
       .navbar-logo .brand { font-size:25px; }
       .nav-links-desktop { display: none; }
       .hamburger { display: flex; }
       .mobile-nav.active { display:block; }
       .btn, .btn-secondary { font-size:16.5px; padding:11px 17px; }
-      .features-hero {flex-direction:column; align-items:center; gap:14px; padding:18px 0 0 0;}
-      .features-title {font-size:36px; text-align:center; margin-top:0;}
-      .features-desc {text-align:center;}
-      .about-app {text-align:center;align-self:center;padding-left:8vw;padding-right:8vw;}
-      .screenshot-section {margin-bottom:9px;}
-      .features-wrapper {grid-template-columns:1fr; gap:18px; padding: 0 0;}
+      .features-hero {flex-direction:column;align-items:center;gap:14px; padding:18px 0 0 0;}
+      .features-title {font-size:36px;}
+      .about-app {padding-left:8vw;padding-right:8vw;}
+      .features-wrapper {grid-template-columns:1fr; gap:18px;padding:0;}
       .feature-card {min-width: 70vw; max-width: 70vw; width: 70vw; margin:10px auto;}
       .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
       .gap-2-lines {height:23px;}
@@ -153,11 +138,7 @@
       color: inherit !important;
       filter: saturate(1.4) brightness(1.08);
     }
-    .dark-mode .about-app {
-      background: #262444 !important;
-      color: #c3c4fa !important;
-      box-shadow:0 2px 24px -7px #12126988;
-    }
+    .dark-mode .about-app {background: #262444 !important;color: #c3c4fa !important;box-shadow:0 2px 24px -7px #12126988;}
   </style>
   <script>
     function setDarkMode(on) {
@@ -169,8 +150,6 @@
       if (savedTheme === 'dark') setDarkMode(true);
       const themeBtn = document.getElementById("theme-toggle-btn");
       if(themeBtn) {themeBtn.addEventListener("click",function(){setDarkMode(!document.body.classList.contains("dark-mode"));});}
-
-      // Hamburger menu logic
       const hamburger = document.getElementById("nav-hamburger");
       const mobileNav = document.getElementById("mobile-nav");
       if(hamburger && mobileNav){
@@ -221,7 +200,7 @@
     <div class="features-title">
       <span class="animate-gradient">Features</span>
     </div>
-    <div class="screenshot-section" style="margin:0 auto;">
+    <div class="screenshot-section">
       <img src="featuresimage.png" alt="Airolyn Features Screenshot"/>
     </div>
     <div class="features-desc">
