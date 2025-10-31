@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Terms of Service | Airolyn App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #f6f7fb; color: #222; }
+    .navbar {
+      background: #181818;
+      color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 32px; min-height: 56px; box-shadow: 0 3px 24px -14px #0005;
+    }
+    .navbar-logo {
+      display: flex; gap:8px; align-items: center; font-size: 30px;
+    }
+    .navbar-logo img { height: 40px; width: auto; display: inline-block;}
+    .brand { font-weight: 700; letter-spacing: .5px; }
+    .nav-menu { display: flex; align-items: center; gap: 14px;}
+    .nav-link {
+      border: none; background: none; padding: 6px 18px; color:#eee; font-size: 18px;
+      text-decoration: none; border-radius: 9px; transition: .18s;
+    }
+    .nav-link.active, .nav-link:hover { background: #232323; color:#6ea8ff; }
+    .nav-btn { border: none; background: #fff; padding:6px 12px; border-radius: 13px;
+      margin-left: 2px; cursor: pointer; display: flex; align-items:center; justify-content: center; transition: background .25s; }
+    .nav-btn svg { width: 28px; height: 28px; fill: #232323; }
+    .nav-btn:hover { background: #f0f0f0; }
+    .github-btn {
+      border: none; background: #fff; 
+      padding: 4px 12px; border-radius: 11px; margin-left: 10px;
+      cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s;
+      height:38px;
+    }
+    .github-btn svg { width: 24px; height: 24px; fill: #232323; margin-right:4px; }
+    .github-btn span { color:#232323; font-weight:500; font-size:17px;}
+    .github-btn:hover { background: #f0f0f0; }
+
+    .terms-hero {
+      width:100vw; max-width:900px; margin:0 auto; padding:46px 0 0 0; display:block; text-align:center;
+    }
+    .terms-title {
+      font-size:44px; font-weight:700; margin-bottom:9px;
+      background: linear-gradient(90deg, #6ea8ff, #b187ff, #e6b0ff, #6ea8ff);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientMove 3s linear infinite;
+      text-align:center;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      100% {background-position: 100% 50%;}
+    }
+    .terms-section {
+      font-size:19px; color:#3c3c55; margin-bottom:30px; line-height:1.65;
+      padding:16px 10px 0 10px; max-width:780px; margin: 0 auto 18px auto; text-align: center;
+      display: block;
+    }
+    .terms-section ul {
+      margin: 1.25em auto 1em auto; padding-left:1em; display:inline-block; text-align:left;
+      font-size: 0.99em; color:#38387c;
+    }
+    .terms-section b { color: #17177d; }
+    .terms-section a { color: #4267bc; }
+    .footer-bar {text-align: center; padding:28px 0 15px 0; font-size: 16px; color: #b1b1bd; background:#181818; color:#fff;}
+    /* --- DARK MODE --- */
+    body.dark-mode {
+      background: #111 !important;
+      color: #fff !important;
+    }
+    .dark-mode .navbar,
+    .dark-mode .footer-bar {
+      background: #181818 !important;
+      color: #fff !important;
+      box-shadow: 0 4px 24px 0 #1113, 0 1.5px 4px #1111;
+    }
+    .dark-mode .nav-link { color: #fff !important; }
+    .dark-mode .nav-link.active, .dark-mode .nav-link:hover {
+      background: #222 !important;
+      color: #6ea8ff !important;
+    }
+    .dark-mode .navbar-logo .brand {color: #fff !important;}
+    .dark-mode .nav-btn, .nav-btn { background: #fff !important; }
+    .dark-mode .nav-btn svg, .nav-btn svg { fill: #232323 !important; }
+    .dark-mode .nav-btn:hover, .nav-btn:hover {background: #f0f0f0 !important;}
+    .dark-mode .terms-title {
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      color: inherit !important;
+      filter: saturate(1.4) brightness(1.08);
+    }
+    .dark-mode .terms-section { color:#ccc;}
+    .dark-mode .terms-section b { color:#fff;}
+    .dark-mode .github-btn { background: #fff !important;}
+    .dark-mode .github-btn:hover { background: #222 !important;}
+    .dark-mode .github-btn span { color:#232323 !important;}
+  </style>
+  <script>
+    function setDarkMode(on) {
+      document.body.classList.toggle('dark-mode', on);
+      localStorage.setItem('airol-theme', on ? 'dark' : 'light');
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+      const savedTheme = localStorage.getItem('airol-theme');
+      if (savedTheme === 'dark') setDarkMode(true);
+
+      const themeBtn = document.getElementById("theme-toggle-btn");
+      if(themeBtn) {
+        themeBtn.addEventListener("click", function() {
+          const wantDark = !document.body.classList.contains("dark-mode");
+          setDarkMode(wantDark);
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-logo">
+    <img src="applogo.png" alt="Airolyn logo">
+    <span class="brand">Airolyn</span>
+  </div>
+  <div class="nav-menu">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="features.html">Features</a>
+    <a class="nav-link" href="privacy.html">Privacy</a>
+    <a class="nav-link active" href="terms.html">Terms</a>
+    <button class="nav-btn" id="theme-toggle-btn" title="Theme">
+      <svg viewBox="0 0 24 24"><path d="M19.5 12.75A7.46 7.46 0 0 1 12 20.25a7.5 7.5 0 0 1 0-15a.75.75 0 0 1 .69 1.02A6.001 6.001 0 0 0 18.97 14a.75.75 0 0 1 .53.99z"/></svg>
+    </button>
+    <a class="github-btn" href="https://github.com/yourusername/yourrepo" target="_blank">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3C5.4.3 0 5.9 0 12.6c0 5.4 3.4 9.9 8.2 11.5.6.1.8-.2.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.6-1.6-1.6-2.1-1.6-2.1-1.2-.8.1-.8.1-.8 1.3.1 1.9 1.4 1.9 1.4 1.2 2 3 .7 3.7.5.1-.8.5-1.4.8-1.7-2.7-.3-5.6-1.3-5.6-5.7 0-1.3.4-2.3 1.1-3.2 0-.3-.5-1.2.1-2.6 0 0 .9-.3 3.2 1.1a10.7 10.7 0 0 1 5.8 0C17 6.8 17.9 7.1 17.9 7.1c.6 1.4.1 2.3.1 2.6.7.8 1.1 1.9 1.1 3.2 0 4.3-2.9 5.3-5.6 5.7.5.4.9 1.2.9 2.4V23c0 .4.2.7.8.6C20.6 22.5 24 18 24 12.6 24 5.9 18.6.3 12 .3z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</nav>
+<main>
+  <div class="terms-hero">
+    <div class="terms-title">
+      Terms of Service
+    </div>
+    <div class="terms-section">
+      <p>
+        By using Airolyn, you agree to the following terms:
+      </p>
+      <ul>
+        <li>
+          <b>Purpose:</b> The app provides air quality and AQI information using third-party data sources for personal awareness. We do not guarantee continuous availability or complete accuracy of external data.
+        </li>
+        <li>
+          <b>Usage:</b> You may use Airolyn for personal, non-commercial purposes only.
+        </li>
+        <li>
+          <b>Data:</b> Your device location and information are used only as described in our privacy policy. We do not sell, share, or use your data for advertising.
+        </li>
+        <li>
+          <b>Accounts:</b> If you sign in with Firebase Authentication, keep your credentials secure. You are responsible for all activity under your account.
+        </li>
+        <li>
+          <b>No Warranty:</b> This app is provided "as is" without warranty of any kind. Use at your own risk, especially for health-related decisions.
+        </li>
+        <li>
+          <b>Updates:</b> Features or terms may be updated periodically. Continued usage after changes constitutes acceptance.
+        </li>
+        <li>
+          <b>Contact:</b> For any questions, reach out at <a href="mailto:airolyn.page@gmail.com" style="color:#333;">airolyn.page@gmail.com</a>.
+        </li>
+      </ul>
+      <p>
+        Last updated: October 2025
+      </p>
+    </div>
+  </div>
+  <footer class="footer-bar">© 2025 Airolyn — Smarter Air Monitoring for Everyone.</footer>
+</main>
+</body>
+</html>
