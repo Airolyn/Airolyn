@@ -126,9 +126,10 @@
       .features-hero-desktop {display:none;}
       .features-hero-mobile {display: flex; flex-direction: column; align-items:center; gap: 14px; padding: 18px 0 0 0; width:100%;}
       .features-title { font-size:36px; text-align:center; margin-top:0; margin-bottom:8px;}
+      /* ↓↓ Font-size for summary line: edit below to change ↓↓ */
+      .features-desc.mobile { font-size:14px; margin-bottom:10px; line-height:1.3; text-align:center; width:100%; padding:0 8vw; color:#2b2b2b; }
       .screenshot-section {margin-bottom:0; width:100%; display:flex; justify-content:center; align-items:center;}
       .screenshot-section img {max-width:340px; width:85vw; border-radius:27px; box-shadow: 0 8px 36px #0002; margin: 0 auto; display: block;}
-      .features-desc {font-size:18px; margin-bottom:9px; line-height:1.5; text-align:center; width:100%; padding-left:8vw; padding-right:8vw;}
       .about-app {margin-top:8px; font-size:16px; color:#38387c; line-height:1.7; max-width:95vw; background: #f5f8ff; border-radius:9px; padding:13px 7vw; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:center;}
       .gap-2-lines { height:23px; }
       .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
@@ -234,11 +235,12 @@
     <div class="features-title">
       <span class="animate-gradient">Features</span>
     </div>
+    <!-- Moved summary line here, above screenshot. Font size is controlled by .features-desc.mobile CSS (see comment above in <style>). -->
+    <div class="features-desc mobile">
+      Discover all the powerful features that make Airolyn the ultimate air quality monitoring app.
+    </div>
     <div class="screenshot-section">
       <img src="featuresimage.png" alt="Airolyn Features Screenshot"/>
-    </div>
-    <div class="features-desc">
-      Discover all the powerful features that make Airolyn the ultimate air quality monitoring app.
     </div>
     <div class="about-app">
       Airolyn is a cutting-edge air quality monitoring app designed to keep you and your loved ones safe and informed, wherever you go. Built for seamless Android experience with modern design in Jetpack Compose, it empowers users to instantly check AQI for any city in India, receive intelligent hourly and health-based notifications, and follow expert breathing routines for better lung health. Utilizing trusted OpenWeatherMap APIs, Airolyn delivers reliable real-time air data and intuitive visual alerts, all in a fast, ad-free and privacy-focused interface. Whether you’re tracking pollution at home, commuting, or traveling, Airolyn helps you make smarter choices for cleaner air and better wellness every day.
