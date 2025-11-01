@@ -126,8 +126,9 @@
       .features-hero-desktop {display:none;}
       .features-hero-mobile {display: flex; flex-direction: column; align-items:center; gap: 14px; padding: 18px 0 0 0; width:100%;}
       .features-title { font-size:36px; text-align:center; margin-top:0; margin-bottom:8px;}
-      /* ↓↓ Font-size for summary line: edit below to change ↓↓ */
-      .features-desc.mobile { font-size:14px; margin-bottom:10px; line-height:1.3; text-align:center; width:100%; padding:0 8vw; color:#2b2b2b; }
+      /* ↓↓ Font-size and color switch for summary line: edit below to change ↓↓ */
+      .features-desc.mobile { font-size:14px; margin-bottom:10px; line-height:1.3; text-align:center; width:100%; padding:0 8vw; color:#111; }
+      body.dark-mode .features-desc.mobile { color: #fff !important; }
       .screenshot-section {margin-bottom:0; width:100%; display:flex; justify-content:center; align-items:center;}
       .screenshot-section img {max-width:340px; width:85vw; border-radius:27px; box-shadow: 0 8px 36px #0002; margin: 0 auto; display: block;}
       .about-app {margin-top:8px; font-size:16px; color:#38387c; line-height:1.7; max-width:95vw; background: #f5f8ff; border-radius:9px; padding:13px 7vw; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:center;}
@@ -235,7 +236,7 @@
     <div class="features-title">
       <span class="animate-gradient">Features</span>
     </div>
-    <!-- Moved summary line here, above screenshot. Font size is controlled by .features-desc.mobile CSS (see comment above in <style>). -->
+    <!-- Moved summary line here, above screenshot. Font size and color is controlled by .features-desc.mobile CSS -->
     <div class="features-desc mobile">
       Discover all the powerful features that make Airolyn the ultimate air quality monitoring app.
     </div>
