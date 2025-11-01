@@ -43,8 +43,6 @@
       .hamburger {display:none !important;}
       .nav-links-desktop {display: flex;}
     }
-
-    /* Desktop Features Hero Layout */
     .features-hero-desktop {
       display: flex; flex-direction: row; justify-content: center; align-items: flex-start;
       gap: 48px; padding: 48px 6vw 0 6vw; max-width: 1350px; margin: 0 auto;
@@ -76,76 +74,65 @@
       margin-top:22px; font-size:18px; color:#38387c; line-height:1.8; max-width:600px;background: #f5f8ff; border-radius:10px; padding:13px 22px; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:left; margin-bottom:15px;
     }
     .gap-2-lines { height:43px; }
-    .features-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, auto);
-      gap: 36px;
-      max-width: 1200px;
-      margin: 18px auto 24px auto;
-      width: 100%;
+    .footer-bar {text-align: center; padding:28px 0 15px 0; font-size: 16px; color: #b1b1bd;}
+
+    .features-paired-row {
+      display: flex;
+      gap: 56px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .feature-card {
+    .features-paired-row.reverse {
+      flex-direction: row-reverse;
+    }
+    .features-paired-row img {
+      max-width: 220px;
+      width: 36vw;
+      border-radius: 18px;
+      box-shadow: 0 7px 28px #0002;
+      background: #fff;
+    }
+    .features-paired-row .feature-card {
+      max-width: 340px;
+      min-width: 180px;
+      flex: 1 0 0;
       background: #fff;
       padding: 28px 28px 22px 28px;
       border-radius: 24px;
       box-shadow: 0 4px 24px 0 #3736400a, 0 1.5px 4px #2221;
-      min-width: 160px;
-      max-width: 330px;
       width: 100%;
-      display: flex; flex-direction: column; gap: 6px; font-size: 17px;
-      align-items: flex-start;
+      display: flex; flex-direction: column; gap: 6px; font-size: 17px; align-items: flex-start;
     }
     .feature-card div:first-child {font-size: 33px;}
     .feature-card div:nth-child(2) {font-weight: 700; font-size: 21px; margin: 10px 0 6px 0;}
-    .footer-bar {text-align: center; padding:28px 0 15px 0; font-size: 16px; color: #b1b1bd;}
-
-    /* Responsive Tablet */
     @media (max-width:1100px) {
-      .features-wrapper {grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,auto);}
       .features-hero-desktop { gap: 18px; }
+      .features-paired-row, .features-paired-row.reverse {max-width: 97vw;}
     }
-    /* Mobile Features Hero */
+    @media (max-width: 900px) {
+      .features-paired-row, .features-paired-row.reverse {
+        flex-direction: column !important;
+        gap: 24px;
+      }
+      .features-paired-row img {
+        min-width: 60vw; width: 84vw; max-width: 420px;
+      }
+    }
     @media (max-width: 800px) {
-      .features-hero-desktop {
-        display:none;
-      }
-      .features-hero-mobile {
-        display: flex; flex-direction: column; align-items:center; gap: 14px; padding: 18px 0 0 0; width:100%;
-      }
-      .features-title {
-        font-size:36px; text-align:center; margin-top:0; margin-bottom:8px;
-      }
-      .screenshot-section {
-        margin-bottom:0; width:100%; display:flex; justify-content:center; align-items:center;
-      }
-      .screenshot-section img {
-        max-width:340px;
-        width:85vw;
-        border-radius:27px;
-        box-shadow: 0 8px 36px #0002;
-        margin: 0 auto;
-        display: block;
-      }
-      .features-desc {
-        font-size:18px; margin-bottom:9px; line-height:1.5; text-align:center; width:100%; padding-left:8vw; padding-right:8vw;
-      }
-      .about-app {
-        margin-top:8px; font-size:16px; color:#38387c; line-height:1.7; max-width:95vw; background: #f5f8ff; border-radius:9px; padding:13px 7vw; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:center;
-      }
+      .features-hero-desktop {display:none;}
+      .features-hero-mobile {display: flex; flex-direction: column; align-items:center; gap: 14px; padding: 18px 0 0 0; width:100%;}
+      .features-title { font-size:36px; text-align:center; margin-top:0; margin-bottom:8px;}
+      .screenshot-section {margin-bottom:0; width:100%; display:flex; justify-content:center; align-items:center;}
+      .screenshot-section img {max-width:340px; width:85vw; border-radius:27px; box-shadow: 0 8px 36px #0002; margin: 0 auto; display: block;}
+      .features-desc {font-size:18px; margin-bottom:9px; line-height:1.5; text-align:center; width:100%; padding-left:8vw; padding-right:8vw;}
+      .about-app {margin-top:8px; font-size:16px; color:#38387c; line-height:1.7; max-width:95vw; background: #f5f8ff; border-radius:9px; padding:13px 7vw; box-shadow:0 2px 24px -7px #c3c4fa44; text-align:center;}
       .gap-2-lines { height:23px; }
-      .features-wrapper {
-        grid-template-columns:1fr; gap:18px;padding:0; margin: 18px 0 24px 0;
-      }
-      .feature-card {
-        min-width: 55vw; max-width: 82vw; width: 77vw; margin:0 auto; font-size:16px; align-items: flex-start;
-        padding: 20px 6vw 14px 6vw;
-      }
-      .feature-card div:first-child {font-size: 25px;}
-      .feature-card div:nth-child(2) {font-weight: 700; font-size: 16.5px; margin: 8px 0 4px 0;}
       .footer-bar {font-size:13.5px; padding:21px 0 13px 0;}
     }
-    /* Hide mobile on desktop */
     @media (min-width: 801px) {
       .features-hero-mobile { display:none; }
     }
@@ -258,13 +245,54 @@
     </div>
   </div>
   <div class="gap-2-lines"></div>
-  <div class="features-wrapper">
-    <div class="feature-card"><div>🌎</div><div>Track AQI for Any City</div><div>Instant local and national air quality readings—stay informed wherever you are.</div></div>
-    <div class="feature-card"><div>🧘</div><div>Breathing Exercises Guide</div><div>Step-by-step guides for healthy breathing routines to improve your respiratory wellness.</div></div>
-    <div class="feature-card"><div>🔔</div><div>Health-Based Alerts</div><div>Custom notifications when AQI drops—protect sensitive groups and kids.</div></div>
-    <div class="feature-card"><div>⚡</div><div>Smart Notifications</div><div>Hourly and condition-based alerts for changing air quality.</div></div>
-    <div class="feature-card"><div>😃</div><div>Intuitive Interface</div><div>Simple, fast, modern, and mobile-friendly app design powered by OpenWeatherMap APIs.</div></div>
-    <div class="feature-card"><div>🚫</div><div>Ad-Free & Private</div><div>No ads, no spam, no data selling. You control your data and account.</div></div>
+  <!-- Features grid with images and correct left/right layout -->
+  <div class="features-paired-row">
+    <div class="feature-card">
+      <div>🌎</div>
+      <div>Track AQI for Any City</div>
+      <div>Instant local and national air quality readings—stay informed wherever you are.</div>
+    </div>
+    <img src="changelocations.png" alt="Change Location Screenshot"/>
+  </div>
+  <div class="features-paired-row reverse">
+    <div class="feature-card">
+      <div>🧘</div>
+      <div>Breathing Exercises Guide</div>
+      <div>Step-by-step guides for healthy breathing routines to improve your respiratory wellness.</div>
+    </div>
+    <img src="secondappmainscreen.png" alt="Breathing Exercises Guide Screenshot"/>
+  </div>
+  <div class="features-paired-row">
+    <div class="feature-card">
+      <div>🎯</div>
+      <div>Theme Settings</div>
+      <div>Tailor the app's appearance to your preference with flexible theme options: choose light, dark, or match your device system settings for the smoothest experience.</div>
+    </div>
+    <img src="themesttings.png" alt="Theme Settings Screenshot"/>
+  </div>
+  <div class="features-paired-row reverse">
+    <div class="feature-card">
+      <div>⚡</div>
+      <div>Smart Notifications</div>
+      <div>Hourly and condition-based alerts for changing air quality.</div>
+    </div>
+    <img src="notificationssettings.png" alt="Notifications Settings Screenshot"/>
+  </div>
+  <div class="features-paired-row">
+    <div class="feature-card">
+      <div>🤔</div>
+      <div>FAQs & Info at Your Fingertips</div>
+      <div>Convenient, accessible answers to all your air quality questions within the app — get guidance any time.</div>
+    </div>
+    <img src="faqspage.png" alt="FAQs Screenshot"/>
+  </div>
+  <div class="features-paired-row reverse">
+    <div class="feature-card">
+      <div>🛠️</div>
+      <div>Send Feedback / Report Bug</div>
+      <div>Quickly send your suggestions or report issues directly from the app — help us improve Airolyn for everyone.</div>
+    </div>
+    <img src="feedbackpage.png" alt="Feedback / Bug Report Screenshot"/>
   </div>
   <footer class="footer-bar">© 2025 Airolyn — Smarter Air Monitoring for Everyone.</footer>
 </main>
